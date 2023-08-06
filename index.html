@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de idade</title>
+    <link rel="shortcut icon" href="age-calculator-app-main/assets/images/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section>
+            <div class="data">
+
+               <form action="/submit" id="myform">
+                   
+                   <div class="nomes">
+                       <label for="iday">Day</label><br>
+                       <label for="imonth">Month</label><br>
+                   
+                       <label for="iyear">Year</label><br>
+                   </div>
+                   
+                   
+                   <div class="input">
+                       <input type="number" id="iday" required placeholder="DD" max="31" min="1">
+                       <input type="number" id="imonth" required placeholder="MM" max="12" min="1">
+                       <input type="number" id="iyear" required placeholder="YYYY" min="1990">
+                   </div>
+                   
+                   <div class="flex">
+                       <div class="button"></div>
+                   
+                       <button type="submit" id="submit"><img src="age-calculator-app-main/assets/images/icon-arrow.svg" alt="arrow"></button>
+                   </div>
+               </form>
+                
+            </div>
+           
+                
+            
+            
+
+            <div class="show-age">
+                <p><strong id="year">--</strong> years</p>
+                <p><strong id="month">--</strong> months</p>
+                <p><strong id="day">--</strong> days</p>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
