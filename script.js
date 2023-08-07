@@ -26,54 +26,43 @@ function validarFormulario(){
     })}
 validarFormulario()
 
-function diasMesesAnos(){
+function diasMesesAnos() {
     const form = document.getElementById('myform');
-    const inputs = document.querySelectorAll('input')
 
-    form.addEventListener('submit', function(event){
+    form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const dia = parseInt(document.getElementById('iday').value);
-
-        const mes = parseInt(document.getElementById('imonth').value);
-
-        const ano = parseInt(document.getElementById('iyear').value);
-
-        
-
         const diaAtual = new Date().getDate();
-        const mesAtual = new Date().getMonth();
+        const mesAtual = new Date().getMonth() + 1;
         const anoAtual = new Date().getFullYear();
 
-        let anoNasc = anoAtual - ano;
-        let mesNas = 0;
-        let diaNasc = 0
+        const dia = parseInt(document.getElementById('iday').value);
+        const mes = parseInt(document.getElementById('imonth').value);
+        const ano = parseInt(document.getElementById('iyear').value);
 
+        const dataNascimento = new Date(ano, mes - 1, dia);
+        const dataAtual = new Date(anoAtual, mesAtual - 1, diaAtual);
 
-        if (mes < mesAtual || (mes === mesAtual && dia <= diaAtual)){
-            mesNas = mesAtual - mes;
-        }else{
-            anoNasc = anoNasc - 1;
-        }
+        let diferencaEmMS = dataAtual - dataNascimento;
 
-        if (dia <= diaAtual){
-            diaNasc = diaAtual - dia;
-        }else{
-            mesNas = mesNas - 1
-        }
+        const umAnoEmMS = 1000 * 60 * 60 * 24 * 365;
+        const umMesEmMS = 1000 * 60 * 60 * 24 * 30;
+
+        let anos = Math.floor(diferencaEmMS / umAnoEmMS);
+        let meses = Math.floor((diferencaEmMS % umAnoEmMS) / umMesEmMS);
+        let dias = Math.floor(((diferencaEmMS % umAnoEmMS) % umMesEmMS) / (1000 * 60 * 60 * 24));
 
         const strdia = document.getElementById('day');
-        strdia.textContent = diaNasc;
+        strdia.textContent = dias;
 
         const strmes = document.getElementById('month');
-        strmes.textContent = mesNas;
+        strmes.textContent = meses;
 
         const strano = document.getElementById('year');
-        strano.textContent = anoNasc;
-
+        strano.textContent = anos;
     })
-    
 }
+
 
 diasMesesAnos()
 
